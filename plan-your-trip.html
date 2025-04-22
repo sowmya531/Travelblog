@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Plan Your Trip - WanderQuest</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #d5d4f7, #f9c5d1);
+      color: #333;
+      padding: 40px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #4a148c;
+    }
+
+    form {
+      max-width: 500px;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.85);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #6a1b9a;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      background-color: #7e57c2;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #5e35b1;
+    }
+
+    #result {
+      max-width: 500px;
+      margin: 20px auto 0;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.6s ease-out;
+    }
+
+    #result.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .result-card {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      animation: bounceIn 0.5s ease-out;
+    }
+
+    @keyframes bounceIn {
+      0% { transform: scale(0.8); }
+      60% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>Plan Your Trip</h1>
+  
+
+  <form id="tripForm">
+    <label for="destination">Select Destination</label>
+    <select id="destination" required>
+      <option value="">--Choose a place--</option>
+      <option value="Goa">Goa</option>
+      <option value="Manali">Manali</option>
+      <option value="Ooty">Ooty</option>
+      <option value="Kerela">Kerela</option>
+      <option value="Uttrakhand">Uttrakhand</option>
+      <option value="Meghalaya">Meghalaya</option>
+      <option value="Rajasthan">Rajasthan</option>
+      <option value="Hampi">Hampi</option>
+    </select>
+
+    <label for="start">Start Date</label>
+    <input type="date" id="start" required>
+
+    <label for="end">End Date</label>
+    <input type="date" id="end" required>
+
+    <label for="budget">Estimated Budget (INR)</label>
+    <input type="number" id="budget" placeholder="e.g. 5000" required>
+
+    <button type="submit">Submit Plan</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    const form = document.getElementById('tripForm');
+    const result = document.getElementById('result');
+
+    const budgetMap = {
+      Goa: 35000,
+      Manali: 30000,
+      Ooty: 25000,
+      Kerela: 40000,
+      Uttrakhand: 30000,
+      Meghalaya: 45000,
+      Rajasthan: 28000,
+      Hampi: 20000
+    };
+
+    function animateValue(start, end, duration, element) {
+      let startTimestamp = null;
+      const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        const value = Math.floor(progress * (end - start) + start);
+        element.textContent = `₹${value.toLocaleString('en-IN')}`;
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+        }
+      };
+      window.requestAnimationFrame(step);
+    }
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const destination = document.getElementById('destination').value;
+      const budget = parseInt(document.getElementById('budget').value);
+
+      if (!destination || isNaN(budget)) return;
+
+      const requiredBudget = budgetMap[destination];
+      let message = '';
+      let statusClass = '';
+
+      if (budget >= requiredBudget) {
+        message = `✅ Your budget of ₹${budget.toLocaleString('en-IN')} is enough for ${destination}!`;
+        statusClass = 'success';
+      } else {
+        message = `❌ Your budget of ₹${budget.toLocaleString('en-IN')} is too low for ${destination}. You need at least ₹${requiredBudget.toLocaleString('en-IN')}.`;
+        statusClass = 'fail';
+      }
+
+      result.innerHTML = `
+        <div class="result-card">
+          <div class="${statusClass}">${message}</div>
+          <div class="budget-count">₹0</div>
+          <div>Required Budget: ₹${requiredBudget.toLocaleString('en-IN')}</div>
+        </div>
+      `;
+
+      result.classList.remove('show');
+      setTimeout(() => {
+        result.classList.add('show');
+        const countElement = result.querySelector('.budget-count');
+        animateValue(0, budget, 1500, countElement);
+      }, 50);
+
+      form.reset();
+    });
+  </script>
+
+</body>
+</html>

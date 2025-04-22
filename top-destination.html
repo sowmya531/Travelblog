@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Top Indian Destinations - WanderQuest</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #b993d6, #8ca6db);
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(to right, #8e2de2, #4a00e0);
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      background: white;
+      padding: 10px 0;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    nav a {
+      color: #8e2de2;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #4a00e0;
+    }
+
+    .section {
+      padding: 50px 20px;
+    }
+
+    .section h2 {
+      text-align: center;
+      color: #fff;
+      margin-bottom: 30px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 15px;
+    }
+
+    .card-content h3 {
+      margin: 0;
+      color: #8e2de2;
+    }
+
+    .card-content p {
+      color: #555;
+    }
+
+    footer {
+      background: #4a00e0;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+
+
+</head>
+<body>
+
+  <header>
+    <h1>Top Indian Destinations</h1>
+    <p>Discover the best places to visit across India</p>
+    <div style="text-align: center; margin: 40px 0;">
+      <a href="plan-your-trip.html">
+        <button style="
+          padding: 12px 30px;
+          font-size: 18px;
+          border: none;
+          border-radius: 10px;
+          background-color: #7e57c2;
+          color: white;
+          font-weight: bold;
+          cursor: pointer;
+          transition: background 0.3s;
+        ">Plan Your Trip</button>
+      </a>
+    </div>
+      
+      
+  </header>
+
+  <nav>
+    <a href="#beaches">Beaches</a>
+    <a href="#mountains">Mountains</a>
+    <a href="#adventure">Adventure</a>
+    <a href="#culture">Cultural</a>
+  </nav>
+
+  <!-- Beaches Section -->
+  <section id="beaches" class="section">
+    <h2>🌊 Indian Beach Destinations</h2>
+    <div class="cards">
+      <div class="card">
+        <img src="goa.jpg" alt="Goa">
+        <div class="card-content">
+          <h3>Goa</h3>
+          <p>Golden sands, nightlife, and Portuguese charm.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="kerela.jpg" alt="Varkala">
+        <div class="card-content">
+          <h3>Varkala, Kerala</h3>
+          <p>Cliffside beaches and serene sunsets.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mountains Section -->
+  <section id="mountains" class="section">
+    <h2>🏔 Indian Mountain Getaways</h2>
+    <div class="cards">
+      <div class="card">
+        <img src="manali.jpg" alt="Manali">
+        <div class="card-content">
+          <h3>Manali, Himachal</h3>
+          <p>Snowy peaks, adventure sports, and serenity.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="ooty.jpg" alt="Ooty">
+        <div class="card-content">
+          <h3>Ooty, Tamil Nadu</h3>
+          <p>Lush green landscapes and colonial charm.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Adventure Section -->
+  <section id="adventure" class="section">
+    <h2>🧗 Indian Adventure Spots</h2>
+    <div class="cards">
+      <div class="card">
+        <img src="Kedarnath_Temple.jpg" alt="Kedarnath">
+        <div class="card-content">
+          <h3>Rishikesh, Uttarakhand</h3>
+          <p>River rafting, yoga, and spiritual vibes.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="meghalaya.jpg" alt="Meghalaya">
+        <div class="card-content">
+          <h3>Meghalaya</h3>
+          <p>Explore caves, rivers, and living root bridges.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cultural Section -->
+  <section id="culture" class="section">
+    <h2>🕌 Cultural & Heritage Spots</h2>
+    <div class="cards">
+      <div class="card">
+        <img src="rajasthan.jpg" alt="Jaipur">
+        <div class="card-content">
+          <h3>Jaipur, Rajasthan</h3>
+          <p>Majestic forts, palaces, and pink city charm.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="hampi.jpg" alt="Hampi">
+        <div class="card-content">
+          <h3>Hampi, Karnataka</h3>
+          <p>UNESCO ruins and rich historical architecture.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    © 2025 WanderQuest | Travel India, Discover Yourself 🇮🇳
+  </footer>
+  
+  
+</body>
+</html>
